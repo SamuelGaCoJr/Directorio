@@ -3,6 +3,7 @@ import './App.css';
 import Busqueda from './Busqueda/Busqueda';
 import Lista from './Lista/Lista';
 import Contacto from './Contacto/Contacto';
+import ModalAmigo from './ModalAmigo';
 import AgregarAmigo from './AgregarAmigo';
 import {ContactoContext, ContactoProvider} from './Context/contactoProvider';
 // import DummyComponent from './DummyComponent';
@@ -42,7 +43,8 @@ function App()
       <ContactoContext.Consumer>
         {({cantidadAmigos,
         contactosFiltro,
-        borrarAmigo})=>(
+        borrarAmigo,
+        modal})=>(
           <React.Fragment>
             <div className='contenedor'>
               <h1 >Mi lista de contactos</h1>
@@ -62,6 +64,7 @@ function App()
               }
             </Lista>
             {contactosFiltro.length===0 && <h1>No tienes amigos T_T</h1>}
+            {modal && <ModalAmigo />}
           </React.Fragment>
         )}
       </ContactoContext.Consumer>
